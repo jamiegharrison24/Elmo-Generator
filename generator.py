@@ -23,6 +23,15 @@ for i in os.listdir('mustache'):
         if i.endswith('.jpg') or i.endswith('.png'):
             mustache = Image.open(os.path.join('mustache',i))
             mustache.resize((512,512))
+            mustache.convert("RGBA")
+            
+            pixdata = mustache.load()
+            width, height = mustache.size
+
+            for y in range(height):
+                for x in range(width):
+                    if pixdata[x, y] == (255, 255, 255, 255):
+                        pixdata[x, y] = (255, 255, 255, 0)
 
         if j.endswith('jpg') or j.endswith('.png'):
             glasses = Image.open(os.path.join('glasses',j))
@@ -36,6 +45,10 @@ for i in os.listdir('mustache'):
         
         
         
+
+
+
+
 
 
 
