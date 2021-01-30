@@ -12,17 +12,41 @@ import os
 directory = ''
 
 # images aare opened, note they must be resized for mask to work properly
-elmo = Image.open("elmo.jpg")
-elmo.resize((512, 512))
+elmoOriginal = Image.open("elmo.jpg")
+elmoOriginal.resize((512, 512))
+elmoCopy = []
 
 
-for i in os.listdir('Mustache'):
+
+for i in range(len(os.listdir('mustache'))):
+    print(i)
+
+
+
+for i in os.listdir('mustache'):
     if i.endswith('.jpg') or i.endswith('.png'):
-            mustache = Image.open(i)
+            
+            mustache = Image.open(os.path.join('mustache',i))
             mustache.resize((512,512))
-            elmoCopy = elmo.copy()
-            elmo.paste(mustache,(0,0),mustache)
-            elmo.show()
+
+            elmoCopy.append(elmoOriginal.copy())
+            elmoCopy[-1].paste(mustache,(0,0),mustache)
+            elmoCopy[-1].show()
+
+
+for i  in os.listdir('glasses'):
+        if i.endswith('.jpg') or i.endswith('.png'):
+            
+            glasses = Image.open(os.path.join('glasses',i))
+            glasses.resize((512,512))
+
+            elmoCopy.append(elmoOriginal.copy())
+            elmoCopy[-1].paste(glasses,(0,0),glasses)
+            elmoCopy[-1].show()
+
+
+
+# for i in os.listdir('hats')
 
 
 
