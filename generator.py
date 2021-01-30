@@ -18,31 +18,48 @@ elmoCopy = []
 
 
 
-for i in range(len(os.listdir('mustache'))):
-    print(i)
-
-
-
 for i in os.listdir('mustache'):
-    if i.endswith('.jpg') or i.endswith('.png'):
-            
+    for j in os.listdir('glasses'):
+        if i.endswith('.jpg') or i.endswith('.png'):
             mustache = Image.open(os.path.join('mustache',i))
             mustache.resize((512,512))
 
-            elmoCopy.append(elmoOriginal.copy())
-            elmoCopy[-1].paste(mustache,(0,0),mustache)
-            elmoCopy[-1].show()
-
-
-for i  in os.listdir('glasses'):
-        if i.endswith('.jpg') or i.endswith('.png'):
-            
-            glasses = Image.open(os.path.join('glasses',i))
+        if j.endswith('jpg') or j.endswith('.png'):
+            glasses = Image.open(os.path.join('glasses',j))
             glasses.resize((512,512))
 
-            elmoCopy.append(elmoOriginal.copy())
-            elmoCopy[-1].paste(glasses,(0,0),glasses)
-            elmoCopy[-1].show()
+        elmoCopy.append(elmoOriginal.copy())
+        elmoCopy[-1].paste(mustache,(120,100),mustache)
+        elmoCopy[-1].paste(glasses,(120,-30),glasses)
+        elmoCopy[-1].show()
+
+        
+        
+        
+
+
+
+
+# for i in os.listdir('mustache'):
+#     if i.endswith('.jpg') or i.endswith('.png'):
+            
+#             mustache = Image.open(os.path.join('mustache',i))
+#             mustache.resize((512,512))
+
+#             elmoCopy.append(elmoOriginal.copy())
+#             elmoCopy[-1].paste(mustache,(0,0),mustache)
+#             elmoCopy[-1].show()
+
+
+# for j  in os.listdir('glasses'):
+#         if j.endswith('.jpg') or j.endswith('.png'):
+            
+#             glasses = Image.open(os.path.join('glasses',j))
+#             glasses.resize((512,512))
+
+#             elmoCopy.append(elmoOriginal.copy())
+#             elmoCopy[-1].paste(glasses,(0,0),glasses)
+#             elmoCopy[-1].show()
 
 
 
