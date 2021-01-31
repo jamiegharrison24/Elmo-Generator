@@ -28,11 +28,6 @@ for i in os.listdir('mustache'):
             pixdata = mustache.load()
             width, height = mustache.size
 
-            for y in range(height):
-                for x in range(width):
-                    if pixdata[x, y] == (255, 255, 255, 255):
-                        pixdata[x, y] = (255, 255, 255, 0)
-
         if j.endswith('jpg') or j.endswith('.png'):
             glasses = Image.open(os.path.join('glasses',j))
             glasses.resize((512,512))
